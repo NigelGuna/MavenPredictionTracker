@@ -16,7 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/prediction")
+@RequestMapping
+//@RequestMapping("/prediction")
 @Api(value = "prediction", description = "An API for Match Prediction", tags = "Prediction API")
 public class PredictionController {
 
