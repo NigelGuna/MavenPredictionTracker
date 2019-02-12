@@ -13,6 +13,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface PredictionRepository extends CrudRepository<Prediction, Integer>{
-    @Query(value = "SELECT p FROM prediction p", nativeQuery = true)
+    @Query(value = "SELECT id FROM february id", nativeQuery = true)
     List <Prediction> findPredictions(Pageable pageRequest);
 }
