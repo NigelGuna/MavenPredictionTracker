@@ -31,7 +31,7 @@ public class Prediction {
     @Column(name="team_two")
     private String teamTwo;
 
-    @Column(name="Prediction")
+    @Column(name="prediction")
     private String prediction;
 
     @Column(name="is_correct")
@@ -41,7 +41,7 @@ public class Prediction {
     private double betAmount;
 
     @Column(name="profit_or_loss")
-    private int profitOrLoss;
+    private double profitOrLoss;
 
     @Column(name="other_notes")
     private String otherNotes;
@@ -105,11 +105,11 @@ public class Prediction {
         this.betAmount = betAmount;
     }
 
-    public int getProfitOrLoss() {
+    public double getProfitOrLoss() {
         return profitOrLoss;
     }
 
-    public void setProfitOrLoss(int profitOrLoss) {
+    public void setProfitOrLoss(double profitOrLoss) {
         this.profitOrLoss = profitOrLoss;
     }
 

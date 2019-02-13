@@ -23,16 +23,18 @@ DROP TABLE IF EXISTS `february`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `february` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `bet_id` int(11) NOT NULL AUTO_INCREMENT,
   `match_date` date DEFAULT NULL,
   `team_one` varchar(255) DEFAULT NULL,
   `team_two` varchar(255) DEFAULT NULL,
   `prediction` varchar(255) DEFAULT NULL,
   `is_correct` varchar(255) DEFAULT NULL,
-  `bet_amount` int(11) DEFAULT NULL,
-  `profit_or_loss` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `bet_amount` decimal(10,2) DEFAULT '0.00',
+  `profit_or_loss` decimal(10,2) DEFAULT '0.00',
+  `other_notes` varchar(255) DEFAULT NULL,
+  `bet_odds` decimal(10,2) DEFAULT '0.00',
+  PRIMARY KEY (`bet_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,6 +43,7 @@ CREATE TABLE `february` (
 
 LOCK TABLES `february` WRITE;
 /*!40000 ALTER TABLE `february` DISABLE KEYS */;
+INSERT INTO `february` VALUES (1,'2019-02-12','Vici Gaming','Room310','Vici Gaming','yes',0.00,0.00,'unsure',0.00),(2,'2019-02-12','Aster','Vici Gaming','Aster','No',0.00,0.00,'unsure',0.00),(3,'2019-02-12','OG','Vega','OG','Yes',0.00,0.00,'sure',0.00),(4,'2019-02-12','Alliance','Kaban','Alliance','Yes',0.00,0.00,'sure',0.00),(5,'2019-02-12','Gambit','ThePango','Gambit','Yes',0.00,0.00,'unsure',0.00),(6,'2019-02-12','NIP','Empire','NIP','Yes',0.00,0.00,'sure',0.00),(7,'2019-02-13','The Pango','Winstrike','Winstrike','string',0.00,0.00,'unsure',0.00),(8,'2019-02-13','NIP','Gambit','NIP','string',0.00,0.00,'sure',0.00),(9,'2019-02-13','Vega','Pavaga','Vega','string',0.00,0.00,'yolo',0.00);
 /*!40000 ALTER TABLE `february` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-02-12 15:15:34
+-- Dump completed on 2019-02-13 14:58:18
