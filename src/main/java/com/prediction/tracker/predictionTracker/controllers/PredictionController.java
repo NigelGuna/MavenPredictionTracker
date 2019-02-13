@@ -10,16 +10,14 @@ import com.prediction.tracker.predictionTracker.services.PredictionService;
 import com.prediction.tracker.predictionTracker.utils.CustomExceptions;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping
 //@RequestMapping("/prediction")
-@Api(value = "prediction", description = "An API for Match Prediction", tags = "Prediction API")
+@Api(value = "prediction", description = "An API for Match Prediction Tracking", tags = "PredictionTracking API")
 public class PredictionController {
 
     @Autowired

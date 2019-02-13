@@ -7,7 +7,6 @@ import com.prediction.tracker.predictionTracker.utils.CustomExceptions;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -89,14 +88,14 @@ public class PredictionService {
     public Prediction assemblePredictionModel(_Prediction _prediction){
         Prediction prediction = new Prediction();
 
-        prediction.setBetAmount(_prediction.getBetAmount());
-        prediction.setIsCorrect(_prediction.getIsCorrect());
         prediction.setMatchDate(_prediction.getMatchDate());
-        prediction.setOtherNotes(_prediction.getOtherNotes());
-        prediction.setPrediction(_prediction.getPrediction());
-        prediction.setBetOdds(_prediction.getBetOdds());
         prediction.setTeamOne(_prediction.getTeamOne());
         prediction.setTeamTwo(_prediction.getTeamTwo());
+        prediction.setPrediction(_prediction.getPrediction());
+        prediction.setIsCorrect(_prediction.getIsCorrect());
+        prediction.setBetAmount(_prediction.getBetAmount());
+        prediction.setOtherNotes(_prediction.getOtherNotes());
+        prediction.setBetOdds(_prediction.getBetOdds());
 
         return prediction;
     }
