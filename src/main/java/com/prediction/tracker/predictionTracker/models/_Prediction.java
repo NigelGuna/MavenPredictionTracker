@@ -1,61 +1,31 @@
-package com.prediction.tracker.predictionTracker.entities;
+package com.prediction.tracker.predictionTracker.models;
 
-/**
- * Created by ngunawardena on 2/12/2019.
- */
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import javax.persistence.*;
-import java.io.Serializable;
-import java.math.BigDecimal;
+import javax.persistence.Column;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.util.Date;
 
-@Entity
-@Table(name = "february")
-@NamedNativeQuery(name="february.findAll", query="SELECT p FROM february p")
-public class Prediction {
-    private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="bet_id")
-    private int matchId;
+/**
+ * Created by ngunawardena on 2/13/2019.
+ */
+public class _Prediction {
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="match_date")
     private Date matchDate;
 
-    @Column(name="team_one")
     private String teamOne;
 
-    @Column(name="team_two")
     private String teamTwo;
 
-    @Column(name="Prediction")
     private String prediction;
 
-    @Column(name="is_correct")
     private String isCorrect;
 
-    @Column(name="bet_amount")
     private double betAmount;
 
-    @Column(name="profit_or_loss")
-    private int profitOrLoss;
-
-    @Column(name="other_notes")
     private String otherNotes;
 
-    @Column (name="bet_odds")
     private double betOdds;
-
-    public int getMatchId() {
-        return matchId;
-    }
-
-    public void setMatchId(int matchId) {
-        this.matchId = matchId;
-    }
 
     public Date getMatchDate() {
         return matchDate;
@@ -103,14 +73,6 @@ public class Prediction {
 
     public void setBetAmount(double betAmount) {
         this.betAmount = betAmount;
-    }
-
-    public int getProfitOrLoss() {
-        return profitOrLoss;
-    }
-
-    public void setProfitOrLoss(int profitOrLoss) {
-        this.profitOrLoss = profitOrLoss;
     }
 
     public String getOtherNotes() {

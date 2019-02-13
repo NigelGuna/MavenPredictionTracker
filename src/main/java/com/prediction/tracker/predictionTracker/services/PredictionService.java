@@ -1,6 +1,7 @@
 package com.prediction.tracker.predictionTracker.services;
 
 import com.prediction.tracker.predictionTracker.entities.Prediction;
+import com.prediction.tracker.predictionTracker.models._Prediction;
 import com.prediction.tracker.predictionTracker.repositories.PredictionRepository;
 import com.prediction.tracker.predictionTracker.utils.CustomExceptions;
 import org.springframework.stereotype.Service;
@@ -28,9 +29,9 @@ public class PredictionService {
         return predictionRepo.findPredictions(new PageRequest(page, size));
     }
 
-    public Prediction addPrediction(Prediction prediction){
+    public Prediction addPrediction(_Prediction _prediction){
         try {
-            return predictionRepo.save(prediction);
+            return predictionRepo.save(assemblePredictionModel(_prediction));
         }catch (Exception e){
             throw new CustomExceptions("Error encountered. Could not save prediction.");
         }
@@ -56,14 +57,48 @@ public class PredictionService {
         }
     }
 
-    public Prediction updatePrediction(int matchId, Prediction prediction){
+    public Prediction updatePrediction(int matchId, _Prediction _prediction){
         Optional<Prediction> foundPredictionId = predictionRepo.findById(matchId);
         if (foundPredictionId.isPresent()){
+            // Create found prediction
             Prediction foundPrediction = foundPredictionId.get();
+            // Validations
+            if(!(_prediction.getTeamOne().equals("string")) && !(_prediction.getTeamOne()==null)){
+                foundPrediction.setTeamOne(_prediction.getTeamOne());
+            }
+            if(!(_prediction.getTeamTwo().equals("string")) && !(_prediction.getTeamTwo()==null)){
+                foundPrediction.setTeamTwo(_prediction.getTeamTwo());
+            }
+            if(!(_prediction.getPrediction().equals("string")) && !(_prediction.getPrediction()==null)){
+                foundPrediction.setPrediction(_prediction.getPrediction());
+            }
+            if(!(_prediction.getOtherNotes().equals("string")) && !(_prediction.getOtherNotes()==null)){
+                foundPrediction.setOtherNotes(_prediction.getOtherNotes());
+            }
+
+            // Other changes
+            foundPrediction.setBetAmount(_prediction.getBetAmount());
+            foundPrediction.setIsCorrect(_prediction.getIsCorrect());
+
             return predictionRepo.save(foundPrediction);
         }else{
             throw new CustomExceptions("Match not found");
         }
+    }
+
+    public Prediction assemblePredictionModel(_Prediction _prediction){
+        Prediction prediction = new Prediction();
+
+        prediction.setBetAmount(_prediction.getBetAmount());
+        prediction.setIsCorrect(_prediction.getIsCorrect());
+        prediction.setMatchDate(_prediction.getMatchDate());
+        prediction.setOtherNotes(_prediction.getOtherNotes());
+        prediction.setPrediction(_prediction.getPrediction());
+        prediction.setBetOdds(_prediction.getBetOdds());
+        prediction.setTeamOne(_prediction.getTeamOne());
+        prediction.setTeamTwo(_prediction.getTeamTwo());
+
+        return prediction;
     }
 
 
